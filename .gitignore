@@ -7,6 +7,7 @@ __pycache__/
 
 # Local app/runtime output
 apps/
+dist/
 outputs/
 ziliao/
 .claude/
