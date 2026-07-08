@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI 产品视频创作工作流 - ESA 户用储能产品 TVC" />
+  <title>AI 产品视频创作工作流 | Mindy Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #030303;
+      --ink: #f4f4f4;
+      --dim: rgba(244, 244, 244, 0.66);
+      --muted: rgba(244, 244, 244, 0.42);
+      --line: rgba(255, 255, 255, 0.18);
+      --line-strong: rgba(255, 255, 255, 0.42);
+      --panel: rgba(0, 0, 0, 0.72);
+      --soft: rgba(255, 255, 255, 0.06);
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 26%),
+        radial-gradient(circle at 50% 92%, rgba(255, 255, 255, 0.08), transparent 28%),
+        linear-gradient(180deg, #050505 0%, #020202 46%, #000 100%);
+      color: var(--ink);
+      font-family: "Geist", "Inter", system-ui, sans-serif;
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      content: "";
+      pointer-events: none;
+    }
+
+    body::before {
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.17) 1px, transparent 1.5px),
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 16px 16px, 100% 5px;
+      opacity: 0.28;
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 9%, #000 92%, transparent 100%);
+    }
+
+    body::after {
+      z-index: -1;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px),
+        radial-gradient(circle at center, transparent 40%, rgba(0, 0, 0, 0.8) 100%);
+      opacity: 0.32;
+      mix-blend-mode: screen;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .page {
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding: 28px 0 88px;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 18px;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 64px;
+      padding: 0 22px;
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      font-size: clamp(20px, 2vw, 28px);
+      font-weight: 800;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 3vw, 42px);
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      transition: color 0.18s ease, opacity 0.18s ease;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .hero {
+      position: relative;
+      padding: clamp(58px, 8vw, 108px) 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.55fr);
+      align-items: end;
+      gap: clamp(28px, 5vw, 76px);
+    }
+
+    .kicker {
+      margin: 0 0 14px;
+      color: var(--dim);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 850px;
+      margin: 0;
+      font-size: clamp(42px, 6.4vw, 92px);
+      font-weight: 800;
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      text-shadow: 2px 0 rgba(255, 255, 255, 0.16), -2px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-copy {
+      margin: 0;
+      color: var(--dim);
+      font-size: clamp(14px, 1.15vw, 17px);
+      line-height: 1.9;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      padding: 8px 12px;
+      color: rgba(255, 255, 255, 0.76);
+      background: rgba(255, 255, 255, 0.03);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section {
+      margin-top: clamp(42px, 7vw, 86px);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(240px, 0.52fr);
+      align-items: end;
+      gap: clamp(22px, 4vw, 56px);
+      margin-bottom: 22px;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: clamp(26px, 3.4vw, 52px);
+      font-weight: 800;
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--dim);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .video-shell,
+    .image-shell,
+    .summary-grid > article {
+      position: relative;
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.72);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+        0 28px 90px rgba(0, 0, 0, 0.62);
+    }
+
+    .video-shell::before,
+    .image-shell::before,
+    .summary-grid > article::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: 0.2;
+      background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 4px);
+      mix-blend-mode: screen;
+    }
+
+    .video-shell {
+      padding: clamp(8px, 1.2vw, 14px);
+    }
+
+    video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      background: #000;
+      object-fit: contain;
+    }
+
+    .media-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 4px 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .image-shell {
+      padding: clamp(8px, 1.4vw, 16px);
+    }
+
+    .workflow-image {
+      display: block;
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      object-fit: contain;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      background: #fff;
+      cursor: zoom-in;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .summary-grid > article {
+      padding: clamp(22px, 3vw, 34px);
+    }
+
+    .summary-grid h3 {
+      margin: 0 0 16px;
+      font-size: clamp(22px, 2.6vw, 36px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .summary-grid p {
+      margin: 0;
+      color: var(--dim);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .flow-line {
+      margin-top: 20px;
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 12px;
+      line-height: 1.8;
+      letter-spacing: 0.08em;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 28px;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .lightbox.is-open { display: flex; }
+
+    .lightbox img {
+      max-width: min(1400px, 96vw);
+      max-height: 88vh;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      background: #fff;
+      object-fit: contain;
+    }
+
+    .lightbox button {
+      position: fixed;
+      top: 22px;
+      right: 24px;
+      border: 1px solid var(--line-strong);
+      padding: 10px 14px;
+      background: #000;
+      color: var(--ink);
+      cursor: pointer;
+      font: 800 12px/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        width: min(100% - 28px, 1180px);
+        padding-top: 16px;
+      }
+
+      .top-nav {
+        position: relative;
+        top: 0;
+        flex-wrap: wrap;
+        padding: 16px;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 10px;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-grid,
+      .section-head,
+      .summary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: clamp(38px, 13vw, 64px);
+      }
+
+      .section {
+        margin-top: 54px;
+      }
+
+      .workflow-image {
+        aspect-ratio: 16 / 9;
+        object-fit: contain;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="top-nav">
+      <a class="brand" href="../index.html">&lt; Mindy</a>
+      <nav class="nav-links" aria-label="Project navigation">
+        <a href="../index.html">项目作品</a>
+        <a href="../../experience/index.html">技能经验</a>
+        <a href="../../contact/index.html">联系我吧</a>
+      </nav>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker mono">AI PRODUCT VIDEO / ESA 4S TVC</p>
+          <h1 id="page-title">AI 产品视频创作工作流｜ESA 户用储能产品 TVC</h1>
+        </div>
+        <div>
+          <p class="hero-copy">
+            围绕 ESA 户用储能产品的 4S 卖点，将 Silent、Smart、Secure、Simple 转化为有故事线、有情绪氛围、有商业传播价值的 AI 产品视频。
+          </p>
+          <div class="tags" aria-label="Project keywords">
+            <span class="tag">Silent</span>
+            <span class="tag">Smart</span>
+            <span class="tag">Secure</span>
+            <span class="tag">Simple</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="video-title">
+      <div class="section-head">
+        <h2 class="section-title" id="video-title">视频结果展示</h2>
+        <p class="section-note">第一版先展示成片结果，让页面从“作品完成度”进入，再往下解释 AI 视频如何从卖点、脚本、垫图和后期修正一步步搭起来。</p>
+      </div>
+      <div class="video-shell">
+        <video controls playsinline preload="metadata" poster="../../public/projects/ai-tvc/workflow-xiaohei.png">
+          <source src="../../public/projects/ai-tvc/esa-ai-tvc.mp4" type="video/mp4" />
+          当前浏览器不支持视频播放。
+        </video>
+        <div class="media-meta mono">
+          <span>ESA AI TVC / embedded video</span>
+          <span>01:06</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="workflow-title">
+      <div class="section-head">
+        <h2 class="section-title" id="workflow-title">Workflow｜制作流程</h2>
+        <p class="section-note">用一张 21:9 小黑手绘图展示完整链路：卖点拆解、脚本分镜、视觉统一、产品垫图、图生视频、多模型测试和后期细节修正。</p>
+      </div>
+      <figure class="image-shell">
+        <img class="workflow-image" src="../../public/projects/ai-tvc/workflow-xiaohei.png" alt="AI 产品视频创作工作流小黑插画" data-lightbox />
+        <figcaption class="media-meta mono">
+          <span>21:9 workflow illustration</span>
+          <span>click to enlarge</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="section summary-grid" aria-label="Output and takeaway">
+      <article>
+        <p class="kicker mono">Output</p>
+        <h3>项目成果</h3>
+        <p>
+          完成一支围绕 ESA 户用储能 4S 卖点展开的 AI 产品视频，并沉淀出一套可复用的 AI 视频制作流程。
+        </p>
+        <div class="flow-line mono">卖点拆解 → 脚本分镜 → 视觉统一 → 产品垫图 → 关键帧生成 → 图生视频 → 后期修正</div>
+      </article>
+      <article>
+        <p class="kicker mono">Takeaway</p>
+        <h3>项目总结</h3>
+        <p>
+          AI 视频真正的难点不是“生成”，而是如何让生成结果接近商业广告片标准。产品理解决定内容方向，审美和镜头判断决定画面质感，提示词和垫图决定画面上限，后期修正决定最终完成度。
+        </p>
+      </article>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button type="button" data-close>Close</button>
+    <img src="../../public/projects/ai-tvc/workflow-xiaohei.png" alt="放大的 AI 产品视频创作工作流小黑插画" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById("lightbox");
+    const lightboxTrigger = document.querySelector("[data-lightbox]");
+    const lightboxClose = document.querySelector("[data-close]");
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightbox.setAttribute("aria-hidden", "true");
+    }
+
+    lightboxTrigger?.addEventListener("click", () => {
+      lightbox.classList.add("is-open");
+      lightbox.setAttribute("aria-hidden", "false");
+    });
+
+    lightboxClose?.addEventListener("click", closeLightbox);
+    lightbox?.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeLightbox();
+    });
+  </script>
+</body>
+</html>

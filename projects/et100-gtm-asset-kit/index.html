@@ -1,0 +1,1200 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description" content="工商业光储产品海外上市营销资料体系搭建 - Mindy portfolio project detail" />
+  <title>ET100 GTM Asset System | Mindy Portfolio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            background: "#030303",
+            surface: "#070707",
+            "surface-container-lowest": "#030303",
+            "surface-container-low": "#0b0b0b",
+            "surface-container": "#111111",
+            "surface-container-high": "#1a1a1a",
+            "surface-container-highest": "#242424",
+            "on-surface": "#f4f4f4",
+            "on-surface-variant": "#b9b9b9",
+            primary: "#ffffff",
+            "primary-fixed-dim": "#d7d7d7",
+            "on-primary": "#050505",
+            secondary: "#f2f2f2",
+            tertiary: "#a8a8a8",
+            outline: "#8c8c8c",
+            "outline-variant": "#2e2e2e"
+          },
+          fontFamily: {
+            geist: ["Geist", "Inter", "sans-serif"],
+            inter: ["Inter", "Geist", "sans-serif"]
+          },
+          spacing: {
+            "margin-mobile": "20px",
+            "margin-desktop": "64px"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --cosmic-bg: #030303;
+      --primary-text: #f4f4f4;
+      --muted-text: rgba(244, 244, 244, 0.62);
+      --accent: #ffffff;
+      --warm-gold: #d7d7d7;
+      --glass-bg: rgba(7, 7, 7, 0.72);
+      --pixel-line: rgba(255, 255, 255, 0.16);
+      --pixel-line-soft: rgba(255, 255, 255, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 58% 12%, rgba(255, 255, 255, 0.07), transparent 24%),
+        radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.08), transparent 36%),
+        linear-gradient(180deg, #050505 0%, #030303 45%, #000 100%);
+      color: var(--primary-text);
+      font-family: "Geist", "Inter", sans-serif;
+    }
+
+    body::before,
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      content: "";
+      pointer-events: none;
+    }
+
+    body::before {
+      opacity: 0.36;
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.22) 1px, transparent 1.5px),
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-position: center;
+      background-size: 18px 18px, 100% 5px;
+      mask-image: linear-gradient(to bottom, transparent 0%, #000 10%, #000 88%, transparent 100%);
+    }
+
+    body::after {
+      opacity: 0.16;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.28) 0,
+          rgba(255, 255, 255, 0.28) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      mix-blend-mode: screen;
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .material-symbols-outlined {
+      font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      font-size: 1em;
+      line-height: 1;
+      vertical-align: -0.16em;
+    }
+
+    .glass-card,
+    .glass-nav {
+      background: var(--glass-bg);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--pixel-line);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+        0 22px 70px rgba(0, 0, 0, 0.58);
+    }
+
+    .glass-nav {
+      background: rgba(3, 3, 3, 0.82);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+    }
+
+    .glass-card {
+      border-radius: 4px !important;
+    }
+
+    .project-detail-nav {
+      background: rgba(3, 3, 3, 0.82);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: none;
+    }
+
+    .project-detail-nav::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      opacity: 0.18;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0.12) 0,
+        rgba(255, 255, 255, 0.12) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+    }
+
+    .project-back-link,
+    .project-nav-button {
+      position: relative;
+      z-index: 1;
+      color: rgba(255, 255, 255, 0.9);
+      font-family: "Inter", "Geist", sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .project-back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      white-space: nowrap;
+    }
+
+    .project-back-link:hover,
+    .project-nav-button:hover {
+      color: #fff;
+    }
+
+    .project-nav-actions {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 0;
+    }
+
+    .project-nav-button {
+      display: inline-flex;
+      min-height: 34px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 0 14px;
+      background: rgba(0, 0, 0, 0.32);
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .project-nav-button + .project-nav-button {
+      margin-left: -1px;
+    }
+
+    .project-nav-button:hover {
+      border-color: rgba(255, 255, 255, 0.74);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .label-text {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Inter", monospace;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-link {
+      position: relative;
+      color: rgba(232, 197, 165, 0.7);
+      transition: color 0.24s ease, transform 0.24s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.is-active {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .nav-link.is-active::after {
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      width: 4px;
+      height: 4px;
+      content: "";
+      background: var(--warm-gold);
+      border-radius: 9999px;
+      box-shadow: 0 0 8px var(--warm-gold);
+      transform: translateX(-50%);
+    }
+
+    .section-title {
+      color: var(--primary-text);
+      font-size: clamp(30px, 4vw, 54px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: 0;
+      text-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
+    }
+
+    .glass-card .section-title,
+    h2,
+    h3 {
+      text-wrap: balance;
+    }
+
+    .hero-cover {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0) 72%, rgba(3, 3, 3, 0.96) 100%);
+    }
+
+    .hero-cover img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .hero-cover::after {
+      position: absolute;
+      inset: auto 0 0;
+      height: 24%;
+      content: "";
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #030303);
+    }
+
+    .placeholder-media {
+      position: relative;
+      display: grid;
+      min-height: 420px;
+      overflow: hidden;
+      border: 1px solid var(--pixel-line);
+      border-radius: 4px;
+      background: rgba(5, 5, 5, 0.72);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+        0 16px 44px rgba(0, 0, 0, 0.48);
+      place-items: center;
+    }
+
+    .placeholder-media::after,
+    .ppt-slide-preview::after {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      content: "";
+      pointer-events: none;
+      opacity: 0.18;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.28) 0,
+        rgba(0, 0, 0, 0.28) 1px,
+        transparent 1px,
+        transparent 4px
+      );
+      mix-blend-mode: multiply;
+    }
+
+    .placeholder-media img,
+    .placeholder-media video {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      object-fit: contain;
+    }
+
+    .media-label {
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      z-index: 2;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 2px;
+      background: rgba(0, 0, 0, 0.82);
+      color: rgba(255, 255, 255, 0.84);
+      padding: 9px 12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .method-viewport {
+      overflow: hidden;
+    }
+
+    .method-card-shell {
+      position: relative;
+    }
+
+    .method-step-copy {
+      padding: 18px 22px;
+      border: 1px solid var(--pixel-line-soft);
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035), transparent 50%),
+        rgba(0, 0, 0, 0.36) !important;
+    }
+
+    .method-side-button {
+      position: absolute;
+      top: 50%;
+      z-index: 4;
+      transform: translateY(-50%);
+    }
+
+    .method-side-button:hover {
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .method-side-button.is-prev {
+      left: -22px;
+    }
+
+    .method-side-button.is-next {
+      right: -22px;
+    }
+
+    .method-track {
+      display: flex;
+      transition: transform 0.48s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .method-slide {
+      min-width: 100%;
+    }
+
+    .method-media {
+      aspect-ratio: 21 / 9;
+      height: auto;
+      min-height: 0;
+      background: #fff;
+    }
+
+    .method-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      object-fit: cover;
+      object-position: center;
+      background: #fff;
+    }
+
+    .round-button,
+    .tab-button {
+      border-radius: 2px !important;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      box-shadow: none !important;
+      transition:
+        transform 0.24s ease,
+        background 0.24s ease,
+        border-color 0.24s ease,
+        color 0.24s ease;
+    }
+
+    .round-button:hover,
+    .tab-button:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.72) !important;
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .tab-button.is-active {
+      border-color: rgba(255, 255, 255, 0.86);
+      background: rgba(255, 255, 255, 0.14);
+      color: #fff;
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+    }
+
+    .asset-module {
+      scroll-margin-top: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .asset-module::before,
+    .method-card-shell::before {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      content: "";
+      pointer-events: none;
+      opacity: 0.16;
+      background:
+        linear-gradient(90deg, transparent 0, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+        repeating-linear-gradient(0deg, transparent 0, transparent 5px, rgba(255, 255, 255, 0.08) 6px);
+      background-size: 28px 100%, 100% 6px;
+    }
+
+    .asset-module > *,
+    .method-card-shell > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .asset-copy {
+      color: var(--muted-text);
+      line-height: 1.8;
+    }
+
+    .asset-grid {
+      --asset-gallery-height: clamp(260px, 26vw, 360px);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      overflow-x: auto;
+      padding-bottom: 2px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .asset-grid::-webkit-scrollbar {
+      display: none;
+    }
+
+    .asset-grid .placeholder-media {
+      display: block;
+      width: auto;
+      min-height: 0;
+      height: var(--asset-gallery-height);
+      flex: 0 0 auto;
+      overflow: hidden;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      place-items: initial;
+    }
+
+    .asset-grid .placeholder-media img {
+      width: auto;
+      height: var(--asset-gallery-height);
+      min-height: 0;
+      border: 0;
+      border-radius: 0;
+      object-fit: contain;
+    }
+
+    .ppt-scroll {
+      display: grid;
+      max-height: min(76vh, 760px);
+      gap: 18px;
+      overflow-y: auto;
+      padding: 4px 6px 4px 0;
+      scrollbar-color: rgba(255, 255, 255, 0.44) rgba(255, 255, 255, 0.06);
+      scrollbar-width: thin;
+    }
+
+    .ppt-slide-preview {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      border: 1px solid var(--pixel-line);
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.46);
+    }
+
+    .ppt-slide-preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .ppt-page-index {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 2px;
+      background: rgba(0, 0, 0, 0.78);
+      color: #fff;
+      padding: 6px 9px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .asset-notes-panel.is-compact {
+      padding: 14px 16px;
+    }
+
+    .asset-note-row {
+      display: grid;
+      grid-template-columns: max-content minmax(0, 1fr) max-content;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .asset-type-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    .asset-type-controls .label-text {
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .asset-notes-panel {
+      border: 1px solid var(--pixel-line-soft);
+      border-radius: 4px;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035), transparent 58%),
+        rgba(0, 0, 0, 0.34);
+    }
+
+    .asset-note-text {
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .asset-note-text.is-switching {
+      opacity: 0;
+      transform: translateX(8px);
+    }
+
+    .zoom-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.9);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
+    }
+
+    .zoom-modal.is-open {
+      display: flex;
+    }
+
+    .zoom-modal img {
+      max-width: min(1100px, 92vw);
+      max-height: 82vh;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 4px;
+      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.6);
+      object-fit: contain;
+    }
+
+    @media (max-width: 767px) {
+      .method-step-copy {
+        padding: 16px;
+      }
+
+      .method-side-button {
+        position: static;
+        transform: none;
+      }
+
+      .method-side-button:hover {
+        transform: translateY(-2px);
+      }
+
+      .placeholder-media,
+      .placeholder-media img,
+      .placeholder-media video {
+        min-height: 240px;
+      }
+
+      .asset-grid {
+        --asset-gallery-height: 230px;
+      }
+
+      .asset-grid .placeholder-media,
+      .asset-grid .placeholder-media img {
+        height: var(--asset-gallery-height);
+        min-height: 0;
+      }
+
+      .asset-grid .placeholder-media img,
+      .asset-grid .placeholder-media:first-child img {
+        max-width: none;
+      }
+
+      .ppt-scroll {
+        max-height: 72vh;
+      }
+
+      .asset-note-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .method-media,
+      .method-media img {
+        height: auto;
+        min-height: 0;
+      }
+
+      .hero-cover::after {
+        height: 18%;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-surface">
+  <header class="project-detail-nav fixed left-1/2 top-5 z-50 flex w-[94%] max-w-[1240px] -translate-x-1/2 items-center justify-between gap-4 px-4 py-3 md:px-6">
+    <a class="project-back-link" href="../index.html" aria-label="Back to all projects">
+      <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+      <span>All Projects</span>
+    </a>
+    <nav class="project-nav-actions" aria-label="Project page navigation">
+      <a class="project-nav-button" href="../../experience/index.html">技能经验</a>
+      <a class="project-nav-button" href="../../index.html">返回主页</a>
+      <a class="project-nav-button" href="../../contact/index.html">联系我吧</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="pb-8" id="overview">
+      <button class="hero-cover group block w-full text-left" type="button" data-zoom-src="../../public/projects/et100/project-hero-cyber.png?v=20260702-cyber" data-zoom-alt="project-hero-cyber.png">
+        <img class="transition-transform duration-700 group-hover:scale-[1.01]" src="../../public/projects/et100/project-hero-cyber.png?v=20260702-cyber" alt="工商业光储产品海外上市营销资料体系搭建项目 Hero" />
+      </button>
+    </section>
+
+    <section class="mx-auto max-w-[1280px] px-margin-mobile py-10 md:px-margin-desktop md:py-10" id="method">
+      <div class="mb-5">
+        <div>
+          <p class="label-text mb-3 text-secondary">Method Slider</p>
+          <h2 class="section-title">产品信息如何转化为营销资料？</h2>
+          <p class="mt-3 max-w-2xl text-[16px] leading-relaxed text-on-surface-variant/75">从产品理解、客户价值转译，到体系化卖点和多渠道资料输出。</p>
+        </div>
+      </div>
+
+      <div class="method-card-shell glass-card rounded-[28px] p-3">
+        <button class="round-button method-side-button is-prev hidden h-12 w-12 place-items-center rounded-full border border-secondary/25 bg-background/80 text-primary shadow-2xl md:grid" type="button" data-method-prev aria-label="Previous method step">
+          <span class="material-symbols-outlined">chevron_left</span>
+        </button>
+        <button class="round-button method-side-button is-next hidden h-12 w-12 place-items-center rounded-full border border-secondary/25 bg-background/80 text-primary shadow-2xl md:grid" type="button" data-method-next aria-label="Next method step">
+          <span class="material-symbols-outlined">chevron_right</span>
+        </button>
+        <div class="method-viewport">
+          <div class="method-track" data-method-track></div>
+        </div>
+        <div class="mt-2 flex items-center justify-between gap-4">
+          <p class="label-text text-secondary" data-method-count>01 / 04</p>
+          <div class="flex gap-3 md:hidden">
+            <button class="round-button method-side-button grid h-11 w-11 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-method-prev aria-label="Previous method step">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button class="round-button method-side-button grid h-11 w-11 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-method-next aria-label="Next method step">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+          </div>
+          <div class="flex gap-2" data-method-dots></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto max-w-[1280px] px-margin-mobile py-20 md:px-margin-desktop" id="assets">
+      <div class="mb-10">
+        <p class="label-text mb-4 text-secondary">Asset Gallery</p>
+        <h2 class="section-title">关键输出物展示｜以 ET100 为例的上市资料包</h2>
+        <p class="mt-5 max-w-4xl text-[16px] leading-[1.9] text-on-surface-variant/75">围绕统一卖点体系，搭建覆盖产品认知、快速理解、销售赋能、线上转化、场景触达和视觉传播的多形态 GTM 资产。</p>
+      </div>
+      <div class="space-y-10" data-asset-sections></div>
+    </section>
+
+    <section class="mx-auto max-w-[1280px] px-margin-mobile py-24 md:px-margin-desktop" id="takeaway">
+      <div class="glass-card rounded-[28px] p-8 md:p-12">
+        <p class="label-text mb-4 text-secondary">Takeaway</p>
+        <h2 class="section-title">让复杂产品拥有可复用的表达系统</h2>
+        <p class="mt-6 max-w-4xl text-[18px] leading-[1.9] text-on-surface-variant/82">对 2B 产品营销资料体系来说，产品资料不是单点物料，而是一套从产品理解、卖点提炼、内容转译到销售复用的系统。我的工作重点，是让复杂技术产品在不同渠道、不同市场、不同销售场景中保持一致、清晰且可用的表达。</p>
+        <p class="mt-6 max-w-4xl text-[15px] leading-[1.8] text-primary-fixed-dim">Product marketing is not about creating isolated assets. It is about building a reusable messaging system that helps complex products become understandable, credible, and usable across markets and touchpoints.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="zoom-modal" data-zoom-modal aria-hidden="true">
+    <button class="absolute right-5 top-5 grid h-11 w-11 place-items-center rounded-full border border-secondary/30 bg-background/80 text-primary" type="button" data-zoom-close aria-label="Close preview">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <img data-zoom-image alt="" />
+  </div>
+
+  <script>
+    const assetBase = "../../public/projects/et100/";
+    const assetVersion = "20260623-conversion-touchpoints";
+    const assetUrl = (fileName) => `${assetBase}${fileName}?v=${assetVersion}`;
+
+    const methodSteps = [
+      {
+        step: "Step 01",
+        title: "Input｜产品信息来源",
+        body: "把产品功能与参数、系统架构与差异化设计、客户场景与使用需求、竞品市场分析拆开，先理解产品到底解决什么问题。",
+        image: "method-step-01-input.png"
+      },
+      {
+        step: "Step 02",
+        title: "Translate｜从技术语言到客户价值",
+        body: "以 ET100 为例，把具体技术点翻译成客户能理解的价值表达。例如，端子过温保护、组件反接保护被转化为安全可靠；每路 42A 输入、兼容大电流组件被转化为发电效率提升与收益表现；10ms 并离网切换被转化为关键负载不断电和领先解决方案能力。",
+        image: "method-step-02-translate.png"
+      },
+      {
+        step: "Step 03",
+        title: "Messaging Structure｜体系化卖点",
+        body: "将分散卖点收束为清晰、一致的对外表达体系。以 ET100 为例，卖点统一归纳为三个角度：可靠安全、灵活高效、适配全场景的领先解决方案。",
+        image: "method-step-03-messaging-structure.png"
+      },
+      {
+        step: "Step 04",
+        title: "Application｜资料输出",
+        body: "同一套核心卖点被统一应用到不同资料中，并根据受众和用途调整表达层级，形成统一但不重复的 GTM 资料体系。",
+        image: "method-step-04-application.png"
+      }
+    ];
+
+    const assetSections = [
+      {
+        id: "awareness",
+        number: "01",
+        title: "Product Awareness｜产品认知资产",
+        intro: "快速建立 ET100 的产品第一印象，让目标客户在第一眼理解这是什么产品、主打什么价值。",
+        display: "grid",
+        gallery: [
+          { label: "Banner", file: "asset-01-banner.png", type: "image" },
+          { label: "带图片正文", file: "asset-01-pr.png", type: "image", contained: true },
+          { label: "纯文案正文", file: "asset-01-rendering.png", type: "image", contained: true }
+        ],
+        tabs: [
+          { label: "PR 稿", file: "asset-01-pr.png", type: "image", description: "用更正式的发布语言统一产品上市信息，明确产品定位、核心价值和市场传播口径。" },
+          { label: "Banner", file: "asset-01-banner.png", type: "image", description: "用主视觉和一句话卖点快速建立产品认知，适合官网、活动页、展会和线上传播入口。" },
+          { label: "产品渲染图", file: "asset-01-rendering.png", type: "image", description: "用统一、专业的产品视觉资产支撑多渠道传播，保证产品形象一致。" }
+        ]
+      },
+      {
+        id: "understanding",
+        number: "02",
+        title: "Quick Understanding｜快速理解资产",
+        intro: "帮助销售、渠道和客户在短时间内理解 ET100 的产品价值、核心卖点和关键规格。",
+        display: "grid",
+        gallery: [
+          { label: "One-page 封面", file: "asset-02-onepage-cover.png", type: "image" },
+          { label: "One-page 卖点页", file: "asset-02-onepage-features.png", type: "image" },
+          { label: "One-page 详情页", file: "asset-02-onepage-detail.png", type: "image" },
+          { label: "Datasheet 参数页", file: "asset-02-datasheet-detail.png", type: "image" }
+        ],
+        tabs: [
+          { label: "One-page", file: "asset-02-onepage.png", type: "image", description: "用一页结构化呈现产品定位、核心卖点、典型场景和关键参数，帮助销售完成初步客户沟通。" },
+          { label: "Datasheet", file: "asset-02-datasheet.png", type: "image", description: "承载标准化技术参数和规格信息，支持客户、渠道和技术评估场景中的严谨信息查询。" }
+        ]
+      },
+      {
+        id: "sales",
+        number: "03",
+        title: "Sales Enablement｜销售赋能资产",
+        intro: "支持海外销售和区域市场进行更完整、更一致的产品讲解、竞品对比和客户沟通。",
+        display: "ppt",
+        pptPages: Array.from({ length: 20 }, (_, index) => `sales-ppt-pages/page-${String(index + 1).padStart(2, "0")}.png`),
+        tabs: [
+          { label: "How-to-Beat PPT", file: "sales-ppt-source/et100-sales-enablement.pdf", type: "document", description: "将产品讲解、系统方案、关键卖点与技术细节整合进完整 PPT，支持销售在客户沟通、方案介绍和竞争场景中更系统地讲清产品。" }
+        ]
+      },
+      {
+        id: "conversion",
+        number: "04",
+        title: "Digital Conversion & Scenario Touchpoints｜线上转化与场景触达资产",
+        intro: "在官网、展会和实际客户触点中承接产品信息，让 ET100 的价值表达进入更具体的客户场景。",
+        display: "grid",
+        gallery: [
+          { label: "展会触点展示 01", file: "asset-04-exhibition-touchpoint-01.png", type: "image" },
+          { label: "展会触点展示 02", file: "asset-04-exhibition-touchpoint-02.png", type: "image" }
+        ],
+        tabs: [
+          { label: "Landing Page", file: "asset-04-landing-page.png", type: "image", description: "将产品定位、核心卖点、参数亮点和应用价值整合到网页结构中，承接线上客户查询与转化路径。" },
+          { label: "展会设计", file: "asset-04-exhibition-design.png", type: "image", description: "将 ET100 的核心卖点转化为现场可识别、可讲解、可停留的视觉与内容模块，支持展台沟通和销售引导。" }
+        ]
+      },
+      {
+        id: "visual",
+        number: "05",
+        title: "Visual Storytelling｜可视化传播资产",
+        intro: "用动态视觉抓住用户注意力，并把复杂硬件产品的结构、安装和使用价值讲得更直观。",
+        lockMedia: true,
+        tabs: [
+          { label: "产品视频", file: "asset-05-product-video.mp4", cover: "asset-05-product-video-cover.png", type: "video", description: "用动态画面展示 ET100 的产品外观、核心卖点和应用价值，让复杂技术能力更容易被客户快速感知，同时提升第一眼吸引力和产品记忆点。" },
+          { label: "安装视频", file: "asset-05-installation-video.mp4", cover: "asset-05-product-video-cover.png", type: "video", description: "将安装步骤和关键操作可视化，帮助渠道、安装商和客户更直观地理解部署流程，降低交付沟通成本。" }
+        ]
+      }
+    ];
+
+    function ProjectImage(item) {
+      const fileName = item.file || item.image;
+      const mediaClass = [
+        "placeholder-media",
+        item.methodImage ? "method-media" : "",
+        item.contained ? "is-contained" : "",
+        "group w-full text-left"
+      ].filter(Boolean).join(" ");
+      const altText = item.label || item.title || "Project asset preview";
+      return `
+        <button class="${mediaClass}" type="button" data-zoom-src="${assetUrl(fileName)}" data-zoom-alt="${fileName}">
+          <img class="transition-transform duration-500 group-hover:scale-[1.025]" src="${assetUrl(fileName)}" alt="${altText}" loading="${item.image ? "eager" : "lazy"}" />
+        </button>
+      `;
+    }
+
+    function ProjectVideo(item) {
+      const cover = item.cover || "asset-05-product-video-cover.png";
+      return `
+        <div class="placeholder-media">
+          <video controls preload="metadata" poster="${assetUrl(cover)}" data-video-file="${item.file}">
+            <source src="${assetUrl(item.file)}" type="video/mp4" />
+          </video>
+        </div>
+      `;
+    }
+
+    function renderMethodSlider() {
+      const track = document.querySelector("[data-method-track]");
+      const dots = document.querySelector("[data-method-dots]");
+      if (!track || !dots) return;
+      track.innerHTML = methodSteps.map((item) => `
+        <article class="method-slide">
+          <div class="space-y-3 p-1">
+            <div class="method-step-copy rounded-[22px] bg-surface-container-low/28">
+              <div>
+                <p class="label-text text-secondary">${item.step}</p>
+                <h3 class="mt-2 max-w-3xl text-[24px] font-extrabold leading-tight text-primary md:text-[30px]">${item.title}</h3>
+              </div>
+              <p class="mt-2 max-w-5xl text-[15px] leading-[1.65] text-on-surface-variant/80 md:text-[15px]">${item.body}</p>
+            </div>
+            ${ProjectImage({ ...item, methodImage: true })}
+          </div>
+        </article>
+      `).join("");
+      dots.innerHTML = methodSteps.map((_, index) => `<button class="h-2.5 w-2.5 rounded-full bg-outline-variant transition-all" type="button" data-method-dot="${index}" aria-label="Go to method step ${index + 1}"></button>`).join("");
+    }
+
+    function AssetSectionTabs(section) {
+      const active = section.tabs[0];
+      if (section.display === "ppt") {
+        const slides = section.pptPages.map((fileName, index) => `
+          <button class="ppt-slide-preview group text-left" type="button" data-zoom-src="${assetUrl(fileName)}" data-zoom-alt="Sales enablement PPT page ${index + 1}">
+            <img class="transition-transform duration-500 group-hover:scale-[1.01]" src="${assetUrl(fileName)}" alt="Sales enablement PPT page ${index + 1}" loading="${index < 3 ? "eager" : "lazy"}" />
+            <span class="ppt-page-index">${String(index + 1).padStart(2, "0")}</span>
+          </button>
+        `).join("");
+        const tabs = section.tabs.map((tab, index) => `
+          <button class="tab-button rounded-full border border-secondary/20 px-4 py-2 text-[12px] font-bold text-on-surface-variant ${index === 0 ? "is-active" : ""}" type="button" data-asset-tab="${section.id}" data-tab-index="${index}">
+            ${tab.label}
+          </button>
+        `).join("");
+        return `
+          <article class="asset-module glass-card rounded-[28px] p-5 md:p-8" data-asset-section="${section.id}">
+            <div class="mb-7 grid grid-cols-1 gap-4 md:grid-cols-[0.22fr_1fr]">
+              <p class="label-text text-secondary">${section.number}</p>
+              <div>
+                <h3 class="text-[28px] font-extrabold leading-tight text-primary md:text-[38px]">${section.title}</h3>
+                <p class="mt-3 max-w-3xl text-[15px] leading-relaxed text-on-surface-variant/75">${section.intro}</p>
+              </div>
+            </div>
+            <div class="ppt-scroll" aria-label="How-to-Beat PPT preview">${slides}</div>
+            <div class="asset-notes-panel is-compact mt-4">
+              <div class="asset-note-row">
+                <div class="asset-type-controls">
+                  <div class="flex flex-wrap gap-2">${tabs}</div>
+                </div>
+                <div class="asset-note-text" data-asset-note="${section.id}">
+                  <p class="asset-copy text-[14px]" data-asset-description="${section.id}">${active.description}</p>
+                </div>
+                <div class="flex gap-2">
+                  <button class="round-button grid h-9 w-9 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-asset-prev="${section.id}" aria-label="Previous material">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                  </button>
+                  <button class="round-button grid h-9 w-9 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-asset-next="${section.id}" aria-label="Next material">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+      if (section.display === "grid") {
+        const gallery = (section.gallery || section.tabs).map((item) => `
+          ${item.type === "video" ? ProjectVideo(item) : ProjectImage(item)}
+        `).join("");
+        const tabs = section.tabs.map((tab, index) => `
+          <button class="tab-button rounded-full border border-secondary/20 px-4 py-2 text-[12px] font-bold text-on-surface-variant ${index === 0 ? "is-active" : ""}" type="button" data-asset-tab="${section.id}" data-tab-index="${index}">
+            ${tab.label}
+          </button>
+        `).join("");
+        return `
+          <article class="asset-module glass-card rounded-[28px] p-5 md:p-8" data-asset-section="${section.id}">
+            <div class="mb-7 grid grid-cols-1 gap-4 md:grid-cols-[0.22fr_1fr]">
+              <p class="label-text text-secondary">${section.number}</p>
+              <div>
+                <h3 class="text-[28px] font-extrabold leading-tight text-primary md:text-[38px]">${section.title}</h3>
+                <p class="mt-3 max-w-3xl text-[15px] leading-relaxed text-on-surface-variant/75">${section.intro}</p>
+              </div>
+            </div>
+            <div class="asset-grid">${gallery}</div>
+            <div class="asset-notes-panel is-compact mt-4">
+              <div class="asset-note-row">
+                <div class="asset-type-controls">
+                  <div class="flex flex-wrap gap-2">${tabs}</div>
+                </div>
+                <div class="asset-note-text" data-asset-note="${section.id}">
+                  <p class="asset-copy text-[14px]" data-asset-description="${section.id}">${active.description}</p>
+                </div>
+                <div class="flex gap-2">
+                  <button class="round-button grid h-9 w-9 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-asset-prev="${section.id}" aria-label="Previous material">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                  </button>
+                  <button class="round-button grid h-9 w-9 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-asset-next="${section.id}" aria-label="Next material">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </article>
+        `;
+      }
+      const media = active.type === "video" ? ProjectVideo(active) : ProjectImage(active);
+      const tabs = section.tabs.map((tab, index) => `
+        <button class="tab-button rounded-full border border-secondary/20 px-4 py-2 text-[12px] font-bold text-on-surface-variant ${index === 0 ? "is-active" : ""}" type="button" data-asset-tab="${section.id}" data-tab-index="${index}">
+          ${tab.label}
+        </button>
+      `).join("");
+      return `
+        <article class="asset-module glass-card rounded-[28px] p-5 md:p-8" data-asset-section="${section.id}">
+          <div class="mb-7 grid grid-cols-1 gap-4 md:grid-cols-[0.22fr_1fr]">
+            <p class="label-text text-secondary">${section.number}</p>
+            <div>
+              <h3 class="text-[28px] font-extrabold leading-tight text-primary md:text-[38px]">${section.title}</h3>
+              <p class="mt-3 max-w-3xl text-[15px] leading-relaxed text-on-surface-variant/75">${section.intro}</p>
+            </div>
+          </div>
+          <div class="space-y-5">
+            <div data-asset-media="${section.id}">${media}</div>
+            <div class="asset-notes-panel is-compact">
+              <div class="asset-note-row">
+                <div class="asset-type-controls">
+                  <div class="flex flex-wrap gap-2">${tabs}</div>
+                </div>
+                <div class="asset-note-text" data-asset-note="${section.id}">
+                  <p class="asset-copy text-[14px]" data-asset-description="${section.id}">${active.description}</p>
+                </div>
+                <div class="flex gap-2">
+                  <button class="round-button grid h-9 w-9 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-asset-prev="${section.id}" aria-label="Previous material">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                  </button>
+                  <button class="round-button grid h-9 w-9 place-items-center rounded-full border border-secondary/25 bg-secondary/10 text-primary" type="button" data-asset-next="${section.id}" aria-label="Next material">
+                    <span class="material-symbols-outlined">chevron_right</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderAssetSections() {
+      const container = document.querySelector("[data-asset-sections]");
+      if (!container) return;
+      container.innerHTML = assetSections.map(AssetSectionTabs).join("");
+    }
+
+    function initGalleryHoverScroll() {
+      document.querySelectorAll(".asset-grid").forEach((gallery) => {
+        let velocity = 0;
+        let frame = null;
+
+        const tick = () => {
+          if (Math.abs(velocity) < 0.01) {
+            frame = null;
+            return;
+          }
+          gallery.scrollLeft += velocity;
+          frame = window.requestAnimationFrame(tick);
+        };
+
+        const start = () => {
+          if (!frame) frame = window.requestAnimationFrame(tick);
+        };
+
+        const updateVelocity = (event) => {
+          const rect = gallery.getBoundingClientRect();
+          const x = (event.clientX - rect.left) / rect.width;
+          const edge = 0.32;
+          if (x < edge) {
+            velocity = -2.2 * ((edge - x) / edge);
+          } else if (x > 1 - edge) {
+            velocity = 2.2 * ((x - (1 - edge)) / edge);
+          } else {
+            velocity = 0;
+          }
+          if (velocity) start();
+        };
+
+        gallery.addEventListener("mousemove", updateVelocity);
+        gallery.addEventListener("pointermove", updateVelocity);
+
+        gallery.addEventListener("mouseleave", () => {
+          velocity = 0;
+        });
+
+        gallery.addEventListener("wheel", (event) => {
+          if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
+            gallery.scrollLeft += event.deltaY;
+            event.preventDefault();
+          }
+        }, { passive: false });
+      });
+    }
+
+    renderMethodSlider();
+    renderAssetSections();
+    initGalleryHoverScroll();
+
+    let currentMethod = 0;
+    const methodTrack = document.querySelector("[data-method-track]");
+    const methodCount = document.querySelector("[data-method-count]");
+
+    function updateMethod(index) {
+      currentMethod = (index + methodSteps.length) % methodSteps.length;
+      if (methodTrack) methodTrack.style.transform = `translateX(-${currentMethod * 100}%)`;
+      if (methodCount) methodCount.textContent = `${String(currentMethod + 1).padStart(2, "0")} / ${String(methodSteps.length).padStart(2, "0")}`;
+      document.querySelectorAll("[data-method-dot]").forEach((dot, index) => {
+        dot.classList.toggle("w-8", index === currentMethod);
+        dot.classList.toggle("bg-secondary", index === currentMethod);
+        dot.classList.toggle("bg-outline-variant", index !== currentMethod);
+      });
+    }
+
+    document.querySelectorAll("[data-method-prev]").forEach((button) => {
+      button.addEventListener("click", () => updateMethod(currentMethod - 1));
+    });
+    document.querySelectorAll("[data-method-next]").forEach((button) => {
+      button.addEventListener("click", () => updateMethod(currentMethod + 1));
+    });
+    document.querySelectorAll("[data-method-dot]").forEach((dot) => {
+      dot.addEventListener("click", () => updateMethod(Number(dot.dataset.methodDot)));
+    });
+    updateMethod(0);
+
+    function setActiveAssetTab(sectionId, tabIndex) {
+      const section = assetSections.find((item) => item.id === sectionId);
+      if (!section) return;
+      const normalizedIndex = (tabIndex + section.tabs.length) % section.tabs.length;
+      const tab = section.tabs[normalizedIndex];
+      const mediaContainer = document.querySelector(`[data-asset-media="${sectionId}"]`);
+      const description = document.querySelector(`[data-asset-description="${sectionId}"]`);
+      const note = document.querySelector(`[data-asset-note="${sectionId}"]`);
+
+      note?.classList.add("is-switching");
+      window.setTimeout(() => {
+        if (mediaContainer && section.display !== "grid" && !section.lockMedia) mediaContainer.innerHTML = tab.type === "video" ? ProjectVideo(tab) : ProjectImage(tab);
+        if (description) description.textContent = tab.description;
+        document.querySelectorAll(`[data-asset-tab="${sectionId}"]`).forEach((item) => {
+          item.classList.toggle("is-active", Number(item.dataset.tabIndex) === normalizedIndex);
+        });
+        note?.classList.remove("is-switching");
+      }, 120);
+    }
+
+    document.querySelectorAll("[data-asset-tab]").forEach((button) => {
+      button.addEventListener("click", () => {
+        setActiveAssetTab(button.dataset.assetTab, Number(button.dataset.tabIndex));
+      });
+    });
+
+    document.querySelectorAll("[data-asset-prev]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const sectionId = button.dataset.assetPrev;
+        const active = document.querySelector(`[data-asset-tab="${sectionId}"].is-active`);
+        setActiveAssetTab(sectionId, Number(active?.dataset.tabIndex || 0) - 1);
+      });
+    });
+
+    document.querySelectorAll("[data-asset-next]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const sectionId = button.dataset.assetNext;
+        const active = document.querySelector(`[data-asset-tab="${sectionId}"].is-active`);
+        setActiveAssetTab(sectionId, Number(active?.dataset.tabIndex || 0) + 1);
+      });
+    });
+
+    const zoomModal = document.querySelector("[data-zoom-modal]");
+    const zoomImage = document.querySelector("[data-zoom-image]");
+
+    document.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-zoom-src]");
+      if (!trigger || !zoomModal || !zoomImage) return;
+      zoomImage.src = trigger.dataset.zoomSrc;
+      zoomImage.alt = trigger.dataset.zoomAlt || "";
+      zoomModal.classList.add("is-open");
+      zoomModal.setAttribute("aria-hidden", "false");
+    });
+
+    document.querySelector("[data-zoom-close]")?.addEventListener("click", () => {
+      zoomModal?.classList.remove("is-open");
+      zoomModal?.setAttribute("aria-hidden", "true");
+    });
+
+    zoomModal?.addEventListener("click", (event) => {
+      if (event.target === zoomModal) {
+        zoomModal.classList.remove("is-open");
+        zoomModal.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        zoomModal?.classList.remove("is-open");
+        zoomModal?.setAttribute("aria-hidden", "true");
+      }
+    });
+
+    const navLinks = document.querySelectorAll(".nav-link");
+    const pageSections = document.querySelectorAll("main section[id]");
+
+    function updateActiveNav() {
+      let active = "overview";
+      pageSections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom >= 150) active = section.id;
+      });
+      navLinks.forEach((link) => link.classList.toggle("is-active", link.getAttribute("href") === `#${active}`));
+    }
+
+    window.addEventListener("scroll", updateActiveNav, { passive: true });
+    updateActiveNav();
+  </script>
+</body>
+</html>

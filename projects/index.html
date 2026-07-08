@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Mindy project orbit - selected portfolio cases" />
+  <title>Project Orbit | Mindy Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #030303;
+      --ink: #f3f3f3;
+      --dim: rgba(243, 243, 243, 0.62);
+      --muted: rgba(243, 243, 243, 0.38);
+      --line: rgba(255, 255, 255, 0.18);
+      --panel: rgba(0, 0, 0, 0.72);
+      --white: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 56% 92%, rgba(255, 255, 255, 0.1), transparent 18%),
+        linear-gradient(180deg, #020202 0%, #050505 54%, #020202 100%);
+      color: var(--ink);
+      font-family: "Geist", "Inter", sans-serif;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      content: "";
+      background-image:
+        radial-gradient(circle, rgba(255, 255, 255, 0.13) 1px, transparent 1.5px),
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 13px 13px, 100% 5px;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    body::after {
+      position: fixed;
+      inset: auto 0 0;
+      z-index: -2;
+      height: 46vh;
+      content: "";
+      background:
+        radial-gradient(ellipse at 16% 86%, rgba(255, 255, 255, 0.24), transparent 18%),
+        radial-gradient(ellipse at 46% 78%, rgba(255, 255, 255, 0.16), transparent 22%),
+        radial-gradient(ellipse at 78% 88%, rgba(255, 255, 255, 0.2), transparent 20%),
+        radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.2), transparent 42%),
+        repeating-radial-gradient(ellipse at center bottom, rgba(255, 255, 255, 0.13) 0 1px, transparent 2px 12px);
+      opacity: 0.42;
+      filter: contrast(1.4);
+      pointer-events: none;
+    }
+
+    a { color: inherit; }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    .scanline {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.045) 0 1px, transparent 1px 4px),
+        radial-gradient(circle at center, transparent 36%, rgba(0, 0, 0, 0.78) 100%);
+      opacity: 0.34;
+      mix-blend-mode: screen;
+    }
+
+    .top-nav {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      z-index: 50;
+      width: min(92vw, 1180px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 22px;
+      border: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.68);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      transform: translateX(-50%);
+    }
+
+    .brand {
+      color: var(--ink);
+      font-size: clamp(18px, 1.6vw, 24px);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: clamp(16px, 3vw, 38px);
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .nav-actions a {
+      text-decoration: none;
+      transition: color 0.18s ease, opacity 0.18s ease;
+    }
+
+    .nav-actions a:hover { color: var(--white); }
+
+    .page {
+      min-height: 100vh;
+      width: min(1180px, calc(100vw - 40px));
+      margin: 0 auto;
+      padding-top: 118px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .page-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 14px 0 0;
+    }
+
+    .kicker {
+      margin: 0;
+      color: var(--dim);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .title {
+      margin: 10px 0 0;
+      font-size: clamp(30px, 4.6vw, 68px);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+      text-shadow: 2px 0 rgba(255, 255, 255, 0.14), -2px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .brief {
+      max-width: 390px;
+      margin: 0;
+      color: var(--dim);
+      font-size: 14px;
+      line-height: 1.8;
+      text-align: right;
+    }
+
+    .orbit-stage {
+      position: relative;
+      min-height: min(64vh, 640px);
+      display: grid;
+      place-items: center;
+      overflow: visible;
+    }
+
+    .orbit-track {
+      position: absolute;
+      width: min(66vw, 760px);
+      height: min(28vw, 270px);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      transform: rotate(-9deg);
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.06) inset,
+        0 0 52px rgba(255, 255, 255, 0.05);
+    }
+
+    .orbit-track::before,
+    .orbit-track::after {
+      position: absolute;
+      inset: 18px;
+      content: "";
+      border: 1px dashed rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+    }
+
+    .orbit-track::after {
+      inset: -18px;
+      border-color: rgba(255, 255, 255, 0.055);
+    }
+
+    .project-node {
+      position: absolute;
+      width: clamp(82px, 8vw, 126px);
+      height: clamp(82px, 8vw, 126px);
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.56);
+      border-radius: 50%;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      transform: translate(-50%, -50%);
+      transition: filter 0.24s ease, opacity 0.24s ease;
+    }
+
+    .project-node:hover,
+    .project-node:focus-visible,
+    .project-node.is-active {
+      outline: none;
+      filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.34));
+    }
+
+    .planet {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: inherit;
+      background:
+        radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.42) 22%, transparent 23%),
+        radial-gradient(circle at 68% 62%, rgba(255, 255, 255, 0.78), transparent 21%),
+        radial-gradient(circle at 46% 52%, rgba(0, 0, 0, 0.7), transparent 28%),
+        repeating-radial-gradient(circle at 40% 58%, rgba(255, 255, 255, 0.75) 0 2px, rgba(0, 0, 0, 0.35) 3px 6px),
+        #121212;
+      box-shadow:
+        inset -18px -12px 0 rgba(0, 0, 0, 0.46),
+        inset 12px 8px 0 rgba(255, 255, 255, 0.22);
+      image-rendering: pixelated;
+    }
+
+    .planet::before {
+      position: absolute;
+      inset: -8%;
+      content: "";
+      background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.62) 0 2px, rgba(255, 255, 255, 0.32) 2px 4px, transparent 4px 7px),
+        radial-gradient(circle at 72% 30%, rgba(0, 0, 0, 0.8), transparent 18%),
+        radial-gradient(circle at 24% 78%, rgba(255, 255, 255, 0.76), transparent 14%);
+      mix-blend-mode: multiply;
+      opacity: 0.72;
+    }
+
+    .project-node[data-tone="light"] .planet {
+      background:
+        radial-gradient(circle at 46% 42%, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.72) 28%, transparent 29%),
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.8) 0 2px, rgba(25, 25, 25, 0.46) 3px 5px),
+        #d9d9d9;
+    }
+
+    .project-node[data-tone="dark"] .planet {
+      background:
+        radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.86), transparent 18%),
+        radial-gradient(circle at 60% 58%, rgba(255, 255, 255, 0.5), transparent 16%),
+        repeating-radial-gradient(circle at 45% 54%, rgba(255, 255, 255, 0.64) 0 1px, rgba(0, 0, 0, 0.76) 2px 5px),
+        #090909;
+    }
+
+    .project-node[data-project-node="0"] .planet {
+      background: #050505 url("../assets/projects/orbit/gtm-planet.png") center / 116% auto no-repeat;
+      box-shadow:
+        inset -14px -10px 0 rgba(0, 0, 0, 0.28),
+        inset 10px 8px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .project-node[data-project-node="0"] .planet::before {
+      background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 1px, rgba(255, 255, 255, 0.08) 1px 3px, transparent 3px 6px),
+        radial-gradient(circle at 50% 48%, transparent 38%, rgba(0, 0, 0, 0.5) 78%);
+      mix-blend-mode: multiply;
+      opacity: 0.38;
+    }
+
+    .project-node[data-project-node="3"] .planet {
+      background: #050505 url("../assets/projects/orbit/ai-tvc-planet.png") center / 118% auto no-repeat;
+      box-shadow:
+        inset -14px -10px 0 rgba(0, 0, 0, 0.28),
+        inset 10px 8px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .project-node[data-project-node="3"] .planet::before {
+      background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.16) 0 1px, rgba(255, 255, 255, 0.09) 1px 3px, transparent 3px 6px),
+        radial-gradient(circle at 48% 48%, transparent 36%, rgba(0, 0, 0, 0.48) 78%);
+      mix-blend-mode: multiply;
+      opacity: 0.36;
+    }
+
+    .project-node[data-project-node="1"] .planet {
+      background: #050505 url("../assets/projects/orbit/community-planet.png") center / 118% auto no-repeat;
+      box-shadow:
+        inset -14px -10px 0 rgba(0, 0, 0, 0.28),
+        inset 10px 8px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .project-node[data-project-node="1"] .planet::before {
+      background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.16) 0 1px, rgba(255, 255, 255, 0.08) 1px 3px, transparent 3px 6px),
+        radial-gradient(circle at 50% 50%, transparent 38%, rgba(0, 0, 0, 0.5) 80%);
+      mix-blend-mode: multiply;
+      opacity: 0.34;
+    }
+
+    .project-node[data-project-node="2"] .planet {
+      background: #050505 url("../assets/projects/orbit/insightflow-planet.png") center / 118% auto no-repeat;
+      box-shadow:
+        inset -14px -10px 0 rgba(0, 0, 0, 0.28),
+        inset 10px 8px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .project-node[data-project-node="2"] .planet::before {
+      background:
+        repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.15) 0 1px, rgba(255, 255, 255, 0.08) 1px 3px, transparent 3px 6px),
+        radial-gradient(circle at 50% 48%, transparent 38%, rgba(0, 0, 0, 0.48) 80%);
+      mix-blend-mode: multiply;
+      opacity: 0.34;
+    }
+
+    .project-node[data-tone="ring"] .planet::after {
+      position: absolute;
+      left: -18%;
+      top: 43%;
+      width: 136%;
+      height: 15%;
+      content: "";
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      border-left-color: transparent;
+      border-right-color: transparent;
+      transform: rotate(-19deg);
+    }
+
+    .project-node[data-tone="screen"] .planet::after {
+      position: absolute;
+      inset: 32% 23%;
+      content: "SUBMIT";
+      display: grid;
+      place-items: center;
+      border: 2px solid rgba(255, 255, 255, 0.74);
+      background: rgba(0, 0, 0, 0.56);
+      color: rgba(255, 255, 255, 0.72);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .project-card {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 160;
+      width: min(330px, calc(100vw - 42px));
+      padding: 20px 20px 18px;
+      border: 2px solid rgba(255, 255, 255, 0.82);
+      background: rgba(245, 245, 245, 0.94);
+      color: #050505;
+      box-shadow: 7px 7px 0 rgba(255, 255, 255, 0.14), 0 24px 60px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%) scale(0.96);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+    }
+
+    .project-card.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(-50%) scale(1);
+    }
+
+    .project-card::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 4px);
+      pointer-events: none;
+      opacity: 0.36;
+    }
+
+    .card-num {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      color: rgba(0, 0, 0, 0.48);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .project-card h2 {
+      position: relative;
+      max-width: 238px;
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    .project-card p {
+      position: relative;
+      margin: 12px 0 0;
+      color: rgba(0, 0, 0, 0.68);
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.7;
+    }
+
+    .project-card a {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      margin-top: 18px;
+      padding: 9px 14px;
+      border: 1px solid #050505;
+      color: #050505;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.16s ease, color 0.16s ease;
+    }
+
+    .project-card a:hover {
+      background: #050505;
+      color: var(--white);
+    }
+
+    .footer-note {
+      display: flex;
+      justify-content: center;
+      padding-bottom: 26px;
+      color: rgba(255, 255, 255, 0.38);
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 820px) {
+      body { overflow-y: auto; }
+
+      .top-nav {
+        top: 16px;
+        padding: 12px 14px;
+      }
+
+      .nav-actions {
+        gap: 14px;
+        font-size: 10px;
+      }
+
+      .page {
+        min-height: 100vh;
+        width: min(100vw - 28px, 720px);
+        padding-top: 96px;
+      }
+
+      .page-header {
+        display: block;
+      }
+
+      .brief {
+        max-width: none;
+        margin-top: 16px;
+        text-align: left;
+      }
+
+      .orbit-stage {
+        min-height: 540px;
+      }
+
+      .orbit-track {
+        width: min(86vw, 470px);
+        height: min(46vw, 240px);
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="top-nav">
+    <a class="brand mono" href="../index.html">&lt; Mindy</a>
+    <nav class="nav-actions mono" aria-label="Project navigation">
+      <a href="../experience/index.html">技能经验</a>
+      <a href="../contact/index.html">联系我吧</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="page-header" aria-labelledby="project-orbit-title">
+      <div>
+        <p class="kicker mono">Project Orbit / Selected Cases</p>
+        <h1 class="title" id="project-orbit-title">项目作品</h1>
+      </div>
+      <p class="brief">沿轨道查看代表项目。鼠标经过星球会暂停旋转并显示项目简介，点击即可进入对应项目详情页。</p>
+    </section>
+
+    <section class="orbit-stage" data-orbit-stage aria-label="Project orbit">
+      <div class="orbit-track" aria-hidden="true"></div>
+
+      <button class="project-node is-active" type="button" data-project-node="0" data-tone="dark" aria-label="工商产品营销体系">
+        <span class="planet" aria-hidden="true"></span>
+      </button>
+
+      <button class="project-node" type="button" data-project-node="1" data-tone="light" aria-label="海外社区网站迭代">
+        <span class="planet" aria-hidden="true"></span>
+      </button>
+
+      <button class="project-node" type="button" data-project-node="2" data-tone="image" aria-label="AI InsightFlow">
+        <span class="planet" aria-hidden="true"></span>
+      </button>
+
+      <button class="project-node" type="button" data-project-node="3" data-tone="ring" aria-label="TVC级AI短片">
+        <span class="planet" aria-hidden="true"></span>
+      </button>
+
+      <article class="project-card" data-project-card aria-live="polite">
+        <span class="card-num mono" data-project-card-num>01</span>
+        <h2 data-project-card-title>工商产品营销体系</h2>
+        <p data-project-card-desc>复杂工商业光储产品的上市营销资料体系，从卖点转译到多渠道 GTM 资产。</p>
+        <a class="mono" data-project-card-link href="et100-gtm-asset-kit/index.html">View Case</a>
+      </article>
+
+    </section>
+
+    <p class="footer-note mono">Mindy Projects</p>
+  </main>
+
+  <script>
+    const projectData = [
+      {
+        title: "工商产品营销体系",
+        desc: "复杂工商业光储产品的上市营销资料体系，从卖点转译到多渠道 GTM 资产。",
+        href: "et100-gtm-asset-kit/index.html"
+      },
+      {
+        title: "海外社区网站迭代",
+        desc: "从内容型社区网站到渠道赋能平台，重构海外安装商与经销商的数字化路径。",
+        href: "community-channel-enablement/index.html"
+      },
+      {
+        title: "AI InsightFlow",
+        desc: "AI 辅助洞察与内容工作流，将信息收集、分析和输出串联为可复用系统。",
+        href: "insightflow/index.html"
+      },
+      {
+        title: "TVC级AI短片",
+        desc: "用 AI 影像能力完成高质感短片概念、脚本和视觉验证。",
+        href: "ai-tvc/index.html"
+      }
+    ];
+
+    const stage = document.querySelector("[data-orbit-stage]");
+    const nodes = [...document.querySelectorAll("[data-project-node]")];
+    const card = document.querySelector("[data-project-card]");
+    const cardNum = document.querySelector("[data-project-card-num]");
+    const cardTitle = document.querySelector("[data-project-card-title]");
+    const cardDesc = document.querySelector("[data-project-card-desc]");
+    const cardLink = document.querySelector("[data-project-card-link]");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let angleOffset = -26;
+    let activeIndex = null;
+    let isPaused = false;
+    let rafId = null;
+    let hideTimer = null;
+
+    const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+    const placeCardNearNode = (node) => {
+      const stageRect = stage.getBoundingClientRect();
+      const nodeX = Number.parseFloat(node.style.left) || stageRect.width / 2;
+      const nodeY = Number.parseFloat(node.style.top) || stageRect.height / 2;
+      const cardWidth = card.offsetWidth || 330;
+      const cardHeight = card.offsetHeight || 190;
+      const gap = 24;
+      const placeLeft = nodeX > stageRect.width / 2;
+      const x = placeLeft ? nodeX - cardWidth - gap : nodeX + node.offsetWidth + gap;
+      const y = clamp(nodeY, cardHeight / 2 + 12, stageRect.height - cardHeight / 2 - 12);
+
+      card.style.left = `${clamp(x, 12, stageRect.width - cardWidth - 12)}px`;
+      card.style.top = `${y}px`;
+    };
+
+    const showCard = (index, node) => {
+      const item = projectData[index];
+      window.clearTimeout(hideTimer);
+      activeIndex = index;
+      nodes.forEach((node, nodeIndex) => {
+        node.classList.toggle("is-active", nodeIndex === index);
+      });
+      cardNum.textContent = String(index + 1).padStart(2, "0");
+      cardTitle.textContent = item.title;
+      cardDesc.textContent = item.desc;
+      cardLink.href = item.href;
+      placeCardNearNode(node);
+      card.classList.add("is-visible");
+    };
+
+    const hideCard = () => {
+      activeIndex = null;
+      nodes.forEach((node) => node.classList.remove("is-active"));
+      card.classList.remove("is-visible");
+    };
+
+    const scheduleHideCard = () => {
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(hideCard, 120);
+    };
+
+    const setPositions = () => {
+      const rect = stage.getBoundingClientRect();
+      const radiusX = Math.min(rect.width * 0.32, 360);
+      const radiusY = Math.min(rect.height * 0.24, 155);
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2 + 8;
+
+      nodes.forEach((node, index) => {
+        const angle = ((index / nodes.length) * Math.PI * 2) + (angleOffset * Math.PI / 180);
+        const x = centerX + Math.cos(angle) * radiusX;
+        const y = centerY + Math.sin(angle) * radiusY;
+        const depth = (Math.sin(angle) + 1) / 2;
+        const scale = 0.74 + depth * 0.34;
+        const opacity = 0.54 + depth * 0.46;
+        node.style.left = `${x}px`;
+        node.style.top = `${y}px`;
+        node.style.zIndex = String(60 + Math.round(depth * 80) + (index === activeIndex ? 80 : 0));
+        node.style.opacity = String(opacity);
+        node.style.transform = `translate(-50%, -50%) scale(${scale})`;
+      });
+    };
+
+    const tick = () => {
+      if (!isPaused && !reducedMotion) {
+        angleOffset = (angleOffset + 0.055) % 360;
+        setPositions();
+      }
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    nodes.forEach((node, index) => {
+      node.addEventListener("mouseenter", () => {
+        isPaused = true;
+        showCard(index, node);
+      });
+
+      node.addEventListener("focus", () => {
+        isPaused = true;
+        showCard(index, node);
+      });
+
+      node.addEventListener("mouseleave", () => {
+        isPaused = false;
+        scheduleHideCard();
+      });
+
+      node.addEventListener("blur", () => {
+        isPaused = false;
+        scheduleHideCard();
+      });
+
+      node.addEventListener("click", () => {
+        window.location.href = projectData[index].href;
+      });
+    });
+
+    card.addEventListener("mouseenter", () => {
+      window.clearTimeout(hideTimer);
+      isPaused = true;
+    });
+
+    card.addEventListener("mouseleave", () => {
+      isPaused = false;
+      scheduleHideCard();
+    });
+
+    window.addEventListener("resize", setPositions);
+    setPositions();
+    tick();
+  </script>
+</body>
+</html>

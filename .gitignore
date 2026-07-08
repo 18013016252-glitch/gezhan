@@ -1,0 +1,23 @@
+.DS_Store
+
+# Python and test caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local app/runtime output
+apps/
+outputs/
+ziliao/
+.claude/
+docs/superpowers/
+
+# Local archives and heavyweight source files not needed by the static site
+*.zip
+public/projects/et100/sales-ppt-source/*.pptx
+public/projects/et100/*-original.mp4
+public/projects/ai-tvc/*-original.mp4
+
+# Nested repositories brought in as local references
+ian-xiaohei-illustrations/
+ian-xiaohei-illustrations/.git/
