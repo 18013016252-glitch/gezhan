@@ -412,20 +412,48 @@
         width: 100%;
         min-width: 0;
       }
-      .film-reel { max-height: none; }
+      .film-reel {
+        max-height: none;
+        overflow: hidden;
+      }
       .film-reel::before,
-      .film-reel::after { display: none; }
+      .film-reel::after {
+        left: 0;
+        right: 0;
+        width: auto;
+        height: 16px;
+        display: block;
+        background:
+          repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.42) 0 12px, transparent 12px 34px),
+          rgba(255, 255, 255, 0.08);
+      }
+      .film-reel::before {
+        top: 0;
+        bottom: auto;
+      }
+      .film-reel::after {
+        top: auto;
+        bottom: 0;
+      }
       .film-strip {
         max-height: none;
-        display: grid;
-        grid-template-columns: repeat(3, 180px);
+        display: flex;
         gap: 16px;
+        width: max-content;
         max-width: 100%;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 34px 0;
+        padding: 28px 0;
       }
-      .film-frame { min-height: 190px; margin: 0; }
+      .film-frame {
+        flex: 0 0 180px;
+        min-height: 190px;
+        margin: 0;
+      }
+      .film-frame:hover,
+      .film-frame.is-active {
+        transform: translateY(-4px);
+      }
       .film-frame img { height: 190px; }
       .section-heading-large { font-size: clamp(32px, 9vw, 40px); }
       .career-copy {
@@ -440,7 +468,6 @@
     <a class="nav-link mono text-[24px] font-bold" href="../index.html#experience">&lt; Mindy</a>
     <nav class="hidden gap-8 text-[12px] tracking-[0.2em] text-white/60 md:flex">
       <a class="nav-link" href="../projects/index.html">项目作品</a>
-      <a class="nav-link" href="../index.html#contact">联系我吧</a>
     </nav>
   </header>
 
@@ -728,7 +755,7 @@
     const careerDetail = document.querySelector("[data-career-detail]");
     const filmStrip = document.querySelector("[data-film-strip]");
     let filmAutoScroll = true;
-    let filmLoopHeight = 0;
+    let filmLoopSize = 0;
 
     const setActiveCareer = (id) => {
       const item = careerData[id];
@@ -760,12 +787,16 @@
         filmStrip.appendChild(clone);
       });
 
-      const refreshLoopHeight = () => {
-        filmLoopHeight = filmStrip.scrollHeight / 2;
+      const isHorizontalFilm = () => window.innerWidth <= 920;
+
+      const refreshLoopSize = () => {
+        filmLoopSize = isHorizontalFilm()
+          ? filmStrip.scrollWidth / 2
+          : filmStrip.scrollHeight / 2;
       };
 
-      refreshLoopHeight();
-      window.addEventListener("resize", refreshLoopHeight);
+      refreshLoopSize();
+      window.addEventListener("resize", refreshLoopSize);
 
       filmStrip.addEventListener("mouseenter", () => {
         filmAutoScroll = false;
@@ -776,18 +807,31 @@
       });
 
       filmStrip.addEventListener("scroll", () => {
-        if (!filmLoopHeight) return;
-        if (filmStrip.scrollTop >= filmLoopHeight) {
-          filmStrip.scrollTop -= filmLoopHeight;
+        if (!filmLoopSize) return;
+        if (isHorizontalFilm()) {
+          if (filmStrip.scrollLeft >= filmLoopSize) {
+            filmStrip.scrollLeft -= filmLoopSize;
+          }
+          return;
+        }
+        if (filmStrip.scrollTop >= filmLoopSize) {
+          filmStrip.scrollTop -= filmLoopSize;
         }
       });
 
       const tick = () => {
         const isHoveringFilm = filmStrip.matches(":hover");
-        if (filmAutoScroll && !isHoveringFilm && filmLoopHeight && window.innerWidth > 920) {
-          filmStrip.scrollTop += 1;
-          if (filmStrip.scrollTop >= filmLoopHeight) {
-            filmStrip.scrollTop -= filmLoopHeight;
+        if (filmAutoScroll && !isHoveringFilm && filmLoopSize) {
+          if (isHorizontalFilm()) {
+            filmStrip.scrollLeft += 0.55;
+            if (filmStrip.scrollLeft >= filmLoopSize) {
+              filmStrip.scrollLeft -= filmLoopSize;
+            }
+          } else {
+            filmStrip.scrollTop += 1;
+            if (filmStrip.scrollTop >= filmLoopSize) {
+              filmStrip.scrollTop -= filmLoopSize;
+            }
           }
         }
         requestAnimationFrame(tick);

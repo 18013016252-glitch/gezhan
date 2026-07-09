@@ -281,6 +281,55 @@
       content: ">>>";
     }
 
+    @media (max-width: 640px) {
+      .intro-type-left {
+        top: 92px;
+        left: 20px;
+        right: 20px;
+        max-width: calc(100vw - 40px);
+        font-size: clamp(20px, 7vw, 28px);
+        line-height: 1.22;
+      }
+
+      .intro-type-right {
+        right: 20px;
+        bottom: 28px;
+        left: 20px;
+        max-width: calc(100vw - 40px);
+        font-size: 12px;
+      }
+
+      .intro-mini-nav {
+        top: 18px;
+        right: 14px;
+        max-width: calc(100vw - 28px);
+        gap: 4px;
+        padding: 5px;
+      }
+
+      .intro-mini-nav a {
+        min-height: 30px;
+        padding: 0 8px;
+        font-size: 10px;
+        letter-spacing: 0.02em;
+      }
+
+      .intro-choice-bar {
+        grid-template-columns: 1fr;
+        width: calc(100vw - 44px);
+        min-width: 0;
+      }
+
+      .intro-choice {
+        min-height: 48px;
+      }
+
+      .intro-choice + .intro-choice {
+        margin-top: -2px;
+        margin-left: 0;
+      }
+    }
+
     @keyframes caret-blink {
       0%, 49% { opacity: 1; }
       50%, 100% { opacity: 0; }
@@ -500,104 +549,6 @@
       height: 180px;
       content: "";
       background: linear-gradient(to bottom, rgba(48, 25, 12, 0), rgba(48, 25, 12, 0.95));
-    }
-
-    .parallax-wrapper {
-      position: relative;
-      width: 100%;
-      height: 480px;
-      overflow: hidden;
-      isolation: isolate;
-    }
-
-    @media (min-width: 768px) {
-      .parallax-wrapper {
-        height: 64vh;
-        min-height: 512px;
-      }
-    }
-
-    .parallax-bg {
-      position: absolute;
-      inset: -10%;
-      z-index: 0;
-      transition: transform 0.12s ease-out;
-      will-change: transform;
-    }
-
-    .hero-video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
-      filter: saturate(1.08) contrast(1.04);
-    }
-
-    .hero-gradient-overlay {
-      position: absolute;
-      inset: 0;
-      z-index: 5;
-      pointer-events: none;
-      background:
-        linear-gradient(to top, #120905 0%, rgba(18, 9, 5, 0.94) 5%, rgba(18, 9, 5, 0.18) 42%, rgba(18, 9, 5, 0) 64%),
-        linear-gradient(to bottom, rgba(18, 9, 5, 0.42) 0%, rgba(18, 9, 5, 0.04) 36%, rgba(18, 9, 5, 0) 62%);
-    }
-
-    .hero-intro {
-      position: absolute;
-      bottom: clamp(92px, 14vh, 136px);
-      left: clamp(24px, 8vw, 104px);
-      z-index: 18;
-      width: min(820px, calc(100vw - 48px));
-      color: var(--primary-text);
-      pointer-events: auto;
-      text-shadow: 0 12px 38px rgba(0, 0, 0, 0.55);
-    }
-
-    .hero-intro-title {
-      font-size: clamp(52px, 7.6vw, 118px);
-      font-weight: 800;
-      line-height: 0.92;
-      letter-spacing: 0;
-    }
-
-    .hero-intro-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 14px;
-      margin-top: 18px;
-      color: rgba(255, 225, 197, 0.88);
-      font-size: clamp(14px, 1.5vw, 20px);
-      font-weight: 750;
-      letter-spacing: 0;
-    }
-
-    .shuffle-text {
-      display: inline-flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      white-space: pre-wrap;
-    }
-
-    .shuffle-token {
-      display: inline-flex;
-      white-space: nowrap;
-    }
-
-    .shuffle-char {
-      display: inline-block;
-      min-width: 0.28em;
-      transition:
-        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-        color 0.32s cubic-bezier(0.22, 1, 0.36, 1);
-      will-change: transform, opacity;
-    }
-
-    .shuffle-char.is-shuffling {
-      color: var(--warm-gold);
-      opacity: 0.72;
-      transform: translateY(-0.18em);
     }
 
     .motion-boundary {
@@ -1118,23 +1069,6 @@
         bottom: 26px;
       }
 
-      .hero-intro {
-        bottom: 88px;
-        left: 22px;
-        width: calc(100vw - 44px);
-      }
-
-      .hero-intro-title {
-        font-size: clamp(42px, 14vw, 66px);
-      }
-
-      .hero-intro-tags {
-        max-width: 330px;
-        margin-top: 14px;
-        gap: 8px 10px;
-        font-size: 13px;
-      }
-
       .dune-quote-panel {
         height: 160px;
       }
@@ -1220,7 +1154,6 @@
     <nav class="intro-mini-nav" aria-label="Intro quick navigation">
       <a href="experience/index.html">技能经验</a>
       <a href="projects/index.html">项目作品</a>
-      <a href="contact/index.html">联系我吧</a>
     </nav>
     <p class="intro-type intro-type-left" data-typewriter="Hi, This is Mindy."></p>
     <p class="intro-type intro-type-right" data-typewriter="B2B Marketing / Product Marketing / Digital Growth / AI Workflow"></p>
@@ -1231,28 +1164,14 @@
   </section>
 
   <header class="glass-nav fixed left-1/2 top-6 z-50 flex w-[95%] max-w-[1280px] -translate-x-1/2 items-center justify-between rounded-full px-10 py-4 transition-all duration-300">
-    <a href="#hero" class="brand-mark text-[48px] font-extrabold leading-none tracking-[-0.04em] text-primary">Mindy</a>
+    <a href="index.html" class="brand-mark text-[48px] font-extrabold leading-none tracking-[-0.04em] text-primary">Mindy</a>
     <nav class="hidden items-center gap-8 md:flex" aria-label="Primary navigation">
       <a class="nav-anchor relative label-text text-on-surface-variant/70 transition-all duration-300 hover:text-secondary" href="#experience">Experience</a>
       <a class="nav-anchor relative label-text text-on-surface-variant/70 transition-all duration-300 hover:text-secondary" href="#projects">Projects</a>
       <a class="nav-anchor relative label-text text-on-surface-variant/70 transition-all duration-300 hover:text-secondary" href="#workflow">AI Workflow</a>
-      <a class="nav-anchor relative label-text text-on-surface-variant/70 transition-all duration-300 hover:text-secondary" href="#contact">Contact</a>
     </nav>
     <a class="resume-button label-text rounded-full bg-primary px-6 py-2.5 text-on-primary transition-transform hover:scale-105 active:scale-95" href="#" aria-label="Download Resume">Download Resume</a>
   </header>
-
-  <section class="parallax-wrapper" id="hero" aria-label="Space parallax hero">
-    <div class="parallax-bg" id="parallax-bg" aria-hidden="true">
-      <video class="hero-video" id="hero-video" poster="assets/hero-banner-21x9.jpg" muted playsinline preload="metadata" loop>
-        <source src="assets/hero-banner-21x9.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <div class="hero-gradient-overlay" aria-hidden="true"></div>
-    <div class="hero-intro">
-      <h1 class="hero-intro-title shuffle-text" data-shuffle-text="This is Mindy.">This is Mindy.</h1>
-      <p class="hero-intro-tags shuffle-text" data-shuffle-text="#B2B市场 #产品营销 #数字营销 #AI工作流 #内容营销">#B2B市场 #产品营销 #数字营销 #AI工作流 #内容营销</p>
-    </div>
-  </section>
 
   <main class="relative z-30 -mt-16 pb-0">
     <div class="mx-auto flex max-w-[1280px] flex-col gap-20 px-margin-mobile md:px-margin-desktop lg:flex-row">
@@ -1522,8 +1441,9 @@
         intro.classList.add("is-complete");
       };
 
-      const finishIntro = () => {
-        revealChoices();
+      let introFinished = false;
+
+      const freezeAtLastFrame = () => {
         if (video.duration && Number.isFinite(video.duration)) {
           try {
             video.currentTime = Math.max(0, video.duration - 0.08);
@@ -1532,9 +1452,20 @@
         video.pause();
       };
 
+      const finishIntro = () => {
+        if (introFinished) return;
+        introFinished = true;
+        revealChoices();
+        freezeAtLastFrame();
+      };
+
       typeTargets.forEach((element, index) => typeText(element, index === 0 ? 260 : 720));
 
+      video.setAttribute("webkit-playsinline", "");
       video.addEventListener("ended", finishIntro);
+      video.addEventListener("loadedmetadata", () => {
+        if (introFinished) freezeAtLastFrame();
+      });
       video.addEventListener("error", () => {
         window.setTimeout(finishIntro, 900);
       });
@@ -1550,10 +1481,7 @@
 
     setupSiteIntro();
 
-    // scroll spy and hero parallax interactions
-    const bgLayer = document.getElementById("parallax-bg");
-    const heroSection = document.getElementById("hero");
-    const heroVideo = document.getElementById("hero-video");
+    // scroll spy and page interactions
     const navAnchors = document.querySelectorAll(".nav-anchor");
     const watchedSections = document.querySelectorAll("section[id], footer[id]");
     const projectNodes = [...document.querySelectorAll("[data-project-node]")];
@@ -1616,88 +1544,6 @@
       });
     });
     setActiveExperience(0);
-
-    const setupShuffleText = () => {
-      const shuffleTargets = [...document.querySelectorAll("[data-shuffle-text]")];
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#市场产品营销数字内容工作流AI";
-
-      const buildCharacters = (element) => {
-        const source = element.dataset.shuffleText || element.textContent || "";
-        element.dataset.originalText = source;
-        element.textContent = "";
-        source.split(/(\s+)/).forEach((token) => {
-          if (!token) return;
-          if (/^\s+$/.test(token)) {
-            element.appendChild(document.createTextNode(token));
-            return;
-          }
-
-          const tokenWrap = document.createElement("span");
-          tokenWrap.className = "shuffle-token";
-          [...token].forEach((char) => {
-            const charWrap = document.createElement("span");
-            charWrap.className = "shuffle-char";
-            charWrap.dataset.finalChar = char;
-            charWrap.textContent = char;
-            tokenWrap.appendChild(charWrap);
-          });
-          element.appendChild(tokenWrap);
-        });
-      };
-
-      const playShuffle = (element) => {
-        if (reducedMotion || element.dataset.shufflePlaying === "true") return;
-        const chars = [...element.querySelectorAll(".shuffle-char")];
-        element.dataset.shufflePlaying = "true";
-        chars.forEach((char, index) => {
-          const finalChar = char.dataset.finalChar || char.textContent || "";
-          const delay = index * 24;
-          window.setTimeout(() => {
-            char.classList.add("is-shuffling");
-            let turns = 0;
-            const timer = window.setInterval(() => {
-              turns += 1;
-              char.textContent = charset[Math.floor(Math.random() * charset.length)] || finalChar;
-              if (turns >= 4) {
-                window.clearInterval(timer);
-                char.textContent = finalChar;
-                char.classList.remove("is-shuffling");
-                if (index === chars.length - 1) {
-                  element.dataset.shufflePlaying = "false";
-                }
-              }
-            }, 42);
-          }, delay);
-        });
-      };
-
-      shuffleTargets.forEach((element) => {
-        buildCharacters(element);
-        element.addEventListener("mouseenter", () => playShuffle(element));
-        element.addEventListener("pointerenter", () => playShuffle(element));
-      });
-
-      const observer = "IntersectionObserver" in window
-        ? new IntersectionObserver((entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting || entry.target.dataset.shufflePlayed === "true") return;
-            entry.target.dataset.shufflePlayed = "true";
-            playShuffle(entry.target);
-          });
-        }, { threshold: 0.35 })
-        : null;
-
-      shuffleTargets.forEach((element) => {
-        if (observer) {
-          observer.observe(element);
-        } else {
-          window.setTimeout(() => playShuffle(element), 260);
-        }
-      });
-    };
-
-    setupShuffleText();
 
     const setupDuneQuote = () => {
       const panel = document.querySelector("[data-dune-quote]");
@@ -1835,50 +1681,6 @@
     };
 
     setupDuneQuote();
-
-    const setHeroParallax = (moveX, moveY) => {
-      if (!bgLayer) return;
-      const bgX = moveX * 16;
-      const bgY = moveY * 12;
-      bgLayer.style.transform = `translate3d(${bgX}px, ${bgY}px, 0)`;
-    };
-
-    window.addEventListener("mousemove", (event) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
-      setHeroParallax((event.clientX - centerX) / centerX, (event.clientY - centerY) / centerY);
-      if (!heroSection) return;
-      const heroRect = heroSection.getBoundingClientRect();
-      const isInsideHero =
-        event.clientX >= heroRect.left &&
-        event.clientX <= heroRect.right &&
-        event.clientY >= heroRect.top &&
-        event.clientY <= heroRect.bottom;
-      if (isInsideHero) {
-        playHeroVideo();
-      } else {
-        pauseHeroVideo();
-      }
-    });
-
-    window.addEventListener("mouseleave", () => {
-      if (bgLayer) bgLayer.style.transform = "translate3d(0, 0, 0)";
-    });
-
-    const playHeroVideo = () => {
-      if (!heroVideo) return;
-      heroVideo.play().catch(() => {});
-    };
-
-    const pauseHeroVideo = () => {
-      if (!heroVideo) return;
-      heroVideo.pause();
-    };
-
-    heroSection?.addEventListener("mouseenter", playHeroVideo);
-    heroSection?.addEventListener("mouseleave", pauseHeroVideo);
-    heroSection?.addEventListener("mousemove", playHeroVideo);
-    heroSection?.addEventListener("touchstart", playHeroVideo, { passive: true });
 
     let projectRotation = 0;
     let activeProject = "gtm";

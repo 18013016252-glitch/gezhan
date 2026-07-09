@@ -661,6 +661,30 @@
       .hero-cover::after {
         height: 18%;
       }
+
+      .project-detail-nav {
+        flex-wrap: nowrap;
+        gap: 8px;
+      }
+
+      .project-back-link,
+      .project-nav-button {
+        font-size: 10px;
+        letter-spacing: 0.04em;
+      }
+
+      .project-back-link {
+        gap: 5px;
+      }
+
+      .project-nav-button {
+        min-height: 32px;
+        padding: 0 9px;
+      }
+
+      #overview {
+        padding-top: 92px;
+      }
     }
   </style>
 </head>
@@ -669,23 +693,22 @@
   <header class="project-detail-nav fixed left-1/2 top-5 z-50 flex w-[94%] max-w-[1240px] -translate-x-1/2 items-center justify-between gap-4 px-4 py-3 md:px-6">
     <a class="project-back-link" href="../index.html" aria-label="Back to all projects">
       <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-      <span>All Projects</span>
+      <span>ALL PROJECT</span>
     </a>
     <nav class="project-nav-actions" aria-label="Project page navigation">
       <a class="project-nav-button" href="../../experience/index.html">技能经验</a>
       <a class="project-nav-button" href="../../index.html">返回主页</a>
-      <a class="project-nav-button" href="../../contact/index.html">联系我吧</a>
     </nav>
   </header>
 
   <main>
-    <section class="pb-8" id="overview">
+    <section class="pb-0 md:pb-4" id="overview">
       <button class="hero-cover group block w-full text-left" type="button" data-zoom-src="../../public/projects/et100/project-hero-cyber.png?v=20260702-cyber" data-zoom-alt="project-hero-cyber.png">
         <img class="transition-transform duration-700 group-hover:scale-[1.01]" src="../../public/projects/et100/project-hero-cyber.png?v=20260702-cyber" alt="工商业光储产品海外上市营销资料体系搭建项目 Hero" />
       </button>
     </section>
 
-    <section class="mx-auto max-w-[1280px] px-margin-mobile py-10 md:px-margin-desktop md:py-10" id="method">
+    <section class="mx-auto max-w-[1280px] px-margin-mobile pb-10 pt-8 md:px-margin-desktop md:pb-12 md:pt-10" id="method">
       <div class="mb-5">
         <div>
           <p class="label-text mb-3 text-secondary">Method Slider</p>
@@ -719,7 +742,7 @@
       </div>
     </section>
 
-    <section class="mx-auto max-w-[1280px] px-margin-mobile py-20 md:px-margin-desktop" id="assets">
+    <section class="mx-auto max-w-[1280px] px-margin-mobile py-10 md:px-margin-desktop md:py-12" id="assets">
       <div class="mb-10">
         <p class="label-text mb-4 text-secondary">Asset Gallery</p>
         <h2 class="section-title">关键输出物展示｜以 ET100 为例的上市资料包</h2>
@@ -728,7 +751,7 @@
       <div class="space-y-10" data-asset-sections></div>
     </section>
 
-    <section class="mx-auto max-w-[1280px] px-margin-mobile py-24 md:px-margin-desktop" id="takeaway">
+    <section class="mx-auto max-w-[1280px] px-margin-mobile pb-16 pt-10 md:px-margin-desktop md:pb-20 md:pt-12" id="takeaway">
       <div class="glass-card rounded-[28px] p-8 md:p-12">
         <p class="label-text mb-4 text-secondary">Takeaway</p>
         <h2 class="section-title">让复杂产品拥有可复用的表达系统</h2>

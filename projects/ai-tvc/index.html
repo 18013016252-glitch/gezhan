@@ -93,15 +93,16 @@
     }
 
     .brand {
-      font-size: clamp(20px, 2vw, 28px);
+      font-size: clamp(14px, 1.6vw, 18px);
       font-weight: 800;
-      letter-spacing: 0.01em;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: clamp(18px, 3vw, 42px);
+      gap: 0;
       color: rgba(255, 255, 255, 0.78);
       font-size: 12px;
       font-weight: 800;
@@ -110,14 +111,30 @@
     }
 
     .nav-links a {
+      display: inline-flex;
+      min-height: 34px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      padding: 0 14px;
+      background: rgba(0, 0, 0, 0.32);
+      color: rgba(255, 255, 255, 0.82);
       transition: color 0.18s ease, opacity 0.18s ease;
     }
 
-    .nav-links a:hover { color: var(--white); }
+    .nav-links a + a {
+      margin-left: -1px;
+    }
+
+    .nav-links a:hover {
+      border-color: var(--line-strong);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--white);
+    }
 
     .hero {
       position: relative;
-      padding: clamp(58px, 8vw, 108px) 0 34px;
+      padding: clamp(48px, 6vw, 84px) 0 12px;
     }
 
     .hero-grid {
@@ -139,10 +156,10 @@
     h1 {
       max-width: 850px;
       margin: 0;
-      font-size: clamp(42px, 6.4vw, 92px);
+      font-size: clamp(34px, 5vw, 68px);
       font-weight: 800;
-      line-height: 0.96;
-      letter-spacing: -0.06em;
+      line-height: 1;
+      letter-spacing: -0.04em;
       text-shadow: 2px 0 rgba(255, 255, 255, 0.16), -2px 0 rgba(255, 255, 255, 0.08);
     }
 
@@ -153,26 +170,12 @@
       line-height: 1.9;
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
-    }
-
-    .tag {
-      border: 1px solid var(--line);
-      padding: 8px 12px;
-      color: rgba(255, 255, 255, 0.76);
-      background: rgba(255, 255, 255, 0.03);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
     .section {
       margin-top: clamp(42px, 7vw, 86px);
+    }
+
+    .hero + .section {
+      margin-top: clamp(18px, 3vw, 34px);
     }
 
     .section-head {
@@ -263,7 +266,7 @@
 
     .summary-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr);
       gap: 16px;
     }
 
@@ -271,28 +274,11 @@
       padding: clamp(22px, 3vw, 34px);
     }
 
-    .summary-grid h3 {
-      margin: 0 0 16px;
-      font-size: clamp(22px, 2.6vw, 36px);
-      line-height: 1;
-      letter-spacing: -0.04em;
-    }
-
     .summary-grid p {
       margin: 0;
       color: var(--dim);
       font-size: 15px;
       line-height: 1.9;
-    }
-
-    .flow-line {
-      margin-top: 20px;
-      padding: 14px 16px;
-      border: 1px solid var(--line);
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 12px;
-      line-height: 1.8;
-      letter-spacing: 0.08em;
     }
 
     .lightbox {
@@ -339,19 +325,33 @@
       .top-nav {
         position: relative;
         top: 0;
-        flex-wrap: wrap;
-        padding: 16px;
+        flex-wrap: nowrap;
+        gap: 8px;
+        padding: 12px;
+      }
+
+      .brand {
+        font-size: 10px;
+        letter-spacing: 0.04em;
       }
 
       .nav-links {
-        width: 100%;
-        justify-content: space-between;
-        gap: 12px;
+        width: auto;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+        gap: 0;
         font-size: 10px;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-links a {
+        min-height: 32px;
+        padding: 0 9px;
       }
 
       .hero {
-        padding-top: 42px;
+        padding-top: 32px;
+        padding-bottom: 6px;
       }
 
       .hero-grid,
@@ -361,11 +361,15 @@
       }
 
       h1 {
-        font-size: clamp(38px, 13vw, 64px);
+        font-size: clamp(32px, 11vw, 52px);
       }
 
       .section {
         margin-top: 54px;
+      }
+
+      .hero + .section {
+        margin-top: 22px;
       }
 
       .workflow-image {
@@ -378,11 +382,10 @@
 <body>
   <main class="page">
     <header class="top-nav">
-      <a class="brand" href="../index.html">&lt; Mindy</a>
+      <a class="brand" href="../index.html">ALL PROJECT</a>
       <nav class="nav-links" aria-label="Project navigation">
-        <a href="../index.html">项目作品</a>
         <a href="../../experience/index.html">技能经验</a>
-        <a href="../../contact/index.html">联系我吧</a>
+        <a href="../../index.html">返回主页</a>
       </nav>
     </header>
 
@@ -390,29 +393,17 @@
       <div class="hero-grid">
         <div>
           <p class="kicker mono">AI PRODUCT VIDEO / ESA 4S TVC</p>
-          <h1 id="page-title">AI 产品视频创作工作流｜ESA 户用储能产品 TVC</h1>
+          <h1 id="page-title">ESA 户用储能产品 TVC</h1>
         </div>
         <div>
-          <p class="hero-copy">
-            围绕 ESA 户用储能产品的 4S 卖点，将 Silent、Smart、Secure、Simple 转化为有故事线、有情绪氛围、有商业传播价值的 AI 产品视频。
-          </p>
-          <div class="tags" aria-label="Project keywords">
-            <span class="tag">Silent</span>
-            <span class="tag">Smart</span>
-            <span class="tag">Secure</span>
-            <span class="tag">Simple</span>
-          </div>
+          <p class="hero-copy">围绕 ESA 户用储能产品卖点，搭建从脚本、垫图、模型测试到后期修正的 AI 视频创作链路。</p>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="video-title">
-      <div class="section-head">
-        <h2 class="section-title" id="video-title">视频结果展示</h2>
-        <p class="section-note">第一版先展示成片结果，让页面从“作品完成度”进入，再往下解释 AI 视频如何从卖点、脚本、垫图和后期修正一步步搭起来。</p>
-      </div>
+    <section class="section" aria-label="作品完成度">
       <div class="video-shell">
-        <video controls playsinline preload="metadata" poster="../../public/projects/ai-tvc/workflow-xiaohei.png">
+        <video controls playsinline preload="metadata">
           <source src="../../public/projects/ai-tvc/esa-ai-tvc.mp4" type="video/mp4" />
           当前浏览器不支持视频播放。
         </video>
@@ -425,8 +416,7 @@
 
     <section class="section" aria-labelledby="workflow-title">
       <div class="section-head">
-        <h2 class="section-title" id="workflow-title">Workflow｜制作流程</h2>
-        <p class="section-note">用一张 21:9 小黑手绘图展示完整链路：卖点拆解、脚本分镜、视觉统一、产品垫图、图生视频、多模型测试和后期细节修正。</p>
+        <h2 class="section-title" id="workflow-title">Workflow</h2>
       </div>
       <figure class="image-shell">
         <img class="workflow-image" src="../../public/projects/ai-tvc/workflow-xiaohei.png" alt="AI 产品视频创作工作流小黑插画" data-lightbox />
@@ -437,18 +427,9 @@
       </figure>
     </section>
 
-    <section class="section summary-grid" aria-label="Output and takeaway">
-      <article>
-        <p class="kicker mono">Output</p>
-        <h3>项目成果</h3>
-        <p>
-          完成一支围绕 ESA 户用储能 4S 卖点展开的 AI 产品视频，并沉淀出一套可复用的 AI 视频制作流程。
-        </p>
-        <div class="flow-line mono">卖点拆解 → 脚本分镜 → 视觉统一 → 产品垫图 → 关键帧生成 → 图生视频 → 后期修正</div>
-      </article>
+    <section class="section summary-grid" aria-label="Takeaway">
       <article>
         <p class="kicker mono">Takeaway</p>
-        <h3>项目总结</h3>
         <p>
           AI 视频真正的难点不是“生成”，而是如何让生成结果接近商业广告片标准。产品理解决定内容方向，审美和镜头判断决定画面质感，提示词和垫图决定画面上限，后期修正决定最终完成度。
         </p>

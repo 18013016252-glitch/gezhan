@@ -482,6 +482,26 @@
         min-height: 460px;
         height: 460px;
       }
+
+      .project-detail-nav {
+        flex-wrap: nowrap;
+        gap: 8px;
+      }
+
+      .project-back-link,
+      .project-nav-button {
+        font-size: 10px;
+        letter-spacing: 0.04em;
+      }
+
+      .project-back-link {
+        gap: 5px;
+      }
+
+      .project-nav-button {
+        min-height: 32px;
+        padding: 0 9px;
+      }
     }
   </style>
 </head>
@@ -490,12 +510,11 @@
     <nav class="project-detail-nav glass-nav mx-auto flex max-w-[1280px] items-center justify-between px-4 py-3 md:px-6" aria-label="Project navigation">
       <a class="project-back-link" href="../index.html" aria-label="Back to all projects">
         <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-        <span>All Projects</span>
+        <span>ALL PROJECT</span>
       </a>
       <div class="project-nav-actions">
         <a class="project-nav-button" href="../../experience/index.html">技能经验</a>
         <a class="project-nav-button" href="../../index.html">返回主页</a>
-        <a class="project-nav-button" href="../../contact/index.html">联系我吧</a>
       </div>
     </nav>
   </header>
