@@ -1,6 +1,11 @@
 {
   "scripts": {
-    "build": "node scripts/build-static.mjs"
+    "build:css": "tailwindcss -i ./src/styles.css -o ./assets/site.css --minify",
+    "build": "npm run build:css && node scripts/build-static.mjs"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "tailwindcss": "^3.4.19"
+  }
 }

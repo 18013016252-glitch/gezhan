@@ -1,4 +1,6 @@
 .DS_Store
+.env
+node_modules/
 
 # Python and test caches
 __pycache__/
